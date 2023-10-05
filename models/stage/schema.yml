@@ -2,8 +2,7 @@ version: 2
 
 sources:
   - name: jaffle_shop
-    database: STUDYDB  
-    schema: RDM_SRC  
+    database: SNOWFLAKE_SAMPLE_DATA  
+    schema: TPCH_SF1  
     tables:
-      - name: src_call_center
- 
+      - name: CUSTOMER 
