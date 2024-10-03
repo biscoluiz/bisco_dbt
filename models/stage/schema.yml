@@ -1,8 +1,27 @@
 version: 2
 
 sources:
-  - name: jaffle_shop
-    database: SNOWFLAKE_SAMPLE_DATA  
-    schema: TPCH_SF1  
+  - name: certification
+    database: STUDYDB  
+    schema: dbt_lbisco  
+    loaded_at_field: LOAD_DATE
+    freshness: # default freshness
+      warn_after: {count: 1, period: day}
+      error_after: {count: 3, period: day}
     tables:
-      - name: CUSTOMER 
+      - name: RAW_CUSTOMER 
+      - name: RAW_LINEITEM
+      - name: rw_nat
+  - name: certification_b
+    database: STUDYDB  
+    schema: dbt_lbisco  
+    tables:
+      - name: testing_errors 
+
+models:
+  - name: testing_errors
+    columns:
+      - name: pk
+        tests:
+          - unique
+          - not_null
